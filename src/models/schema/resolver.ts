@@ -10,10 +10,10 @@ const users = [
 ];
 
 export const resolvers = {
-    
+
     Query: {
         me(parent, args, context, info) {
             return users.find(user => user.email === args.email);
         }
     }
-}
+};

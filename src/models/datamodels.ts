@@ -1,5 +1,5 @@
-class user {
-    _id:string;
-    email: String;
-    name: String;
+class User {
+    _id: string;
+    email: string;
+    name: string;
 }
