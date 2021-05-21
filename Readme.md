@@ -13,4 +13,7 @@ The Backend for [budgetium](https://github.com/Keith3895/budgetium) App.
 - add a .env file with the following values:
 ```
 MONGODB_URL=
+DB=
+OIDC_URL=
 ```
+- run the app: ``yarn watch`` or ``npm run watch``

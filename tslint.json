@@ -78,7 +78,8 @@
                 "allow-destructuring": true
             }
         ],
-        "use-isnan": true
+        "use-isnan": true,
+        "max-classes-per-file":false
     },
     "rulesDirectory": []
 }
