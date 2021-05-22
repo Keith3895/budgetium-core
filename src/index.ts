@@ -1,24 +1,16 @@
 import express from 'express';
-import { resolvers, typeDefs } from './models';
+import { Resolver, typeDefs } from './models';
 import { ApolloServer } from 'apollo-server-express';
 import MongoConnection from './services/persistance/mongoConnection';
 import { config } from 'dotenv';
-import { UserService } from './services';
+import { Context } from './middleware/context.middleware';
 config();
 const app = express();
-
+const context = new Context();
+const resolvers = new Resolver().resolvers;
 const apServer = new ApolloServer({
     typeDefs, resolvers,
-    context: async ({ req }) => {
-        const token = req.headers.authorization || '';
-        try {
-            const user = await new UserService().getUser(token);
-            if (!user) throw new Error('you must be logged in');
-            return { user };
-        } catch (e) {
-            throw new Error('you must be logged in');
-        }
-    }
+    context: context.contextSetter
 });
 
 apServer.start();
