@@ -14,7 +14,7 @@ export class AccountService {
         this.dbOperation.insertOne('accounts', account);
     }
     async getAccounts(email: string, limit?: number, skip?: number): Promise<Account[]> {
-        let result: Account[] = await this.dbOperation.find('accounts', { 'user_id': email },{limit:limit,skip:skip});
+        let result: Account[] = await this.dbOperation.find('accounts', { 'user_id': email }, { 'limit': limit, 'skip': skip });
         return result;
     }
 }
