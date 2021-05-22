@@ -1,11 +1,18 @@
 import express from 'express';
-import { resolvers, typeDefs } from './models';
+import { Resolver, typeDefs } from './models';
 import { ApolloServer } from 'apollo-server-express';
 import MongoConnection from './services/persistance/mongoConnection';
 import { config } from 'dotenv';
+import { Context } from './middleware/context.middleware';
 config();
 const app = express();
-const apServer = new ApolloServer({ typeDefs, resolvers });
+const context = new Context();
+const resolvers = new Resolver().resolvers;
+const apServer = new ApolloServer({
+    typeDefs, resolvers,
+    context: context.contextSetter
+});
+
 apServer.start();
 apServer.applyMiddleware({ app });
 app.get('/ping', (req, res) => {

@@ -7,6 +7,7 @@
   "dependencies": {
     "apollo-server": "^2.24.0",
     "apollo-server-express": "^2.24.0",
+    "axios": "^0.21.1",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "graphql": "^15.5.0",
@@ -30,7 +31,9 @@
     "@types/mocha": "^8.2.2",
     "@types/node": "^15.3.0",
     "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "mocha": "^8.4.0",
+    "nock": "^13.0.11",
     "nyc": "^15.1.0",
     "sinon": "^10.0.0",
     "ts-node-dev": "^1.1.6",
