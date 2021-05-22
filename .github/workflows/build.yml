@@ -25,10 +25,9 @@ jobs:
       
     # Runs a single command using the runners shell
     - name: Setup Node.js environment
-      uses: actions/setup-node@v1.4.2
+      uses: actions/setup-node@v2
       with:
-        # Version Spec of the version to use.  Examples: 10.x, 10.15.1, >=10.15.0
-        node-version: 14.x
+        node-version: '14'
     # Runs a set of commands using the runners shell
     - name: Initialize environment
       run: npm install
