@@ -5,8 +5,8 @@
   "author": "keith3895 <keith30895@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "apollo-server": "^2.24.0",
-    "apollo-server-express": "^2.24.0",
+    "apollo-server": "^2.25.2",
+    "apollo-server-express": "^2.25.2",
     "axios": "^0.21.1",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
