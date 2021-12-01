@@ -6,19 +6,22 @@ import { config } from 'dotenv';
 import { Context } from './middleware/context.middleware';
 config();
 const app = express();
-const context = new Context();
-const resolvers = new Resolver().resolvers;
-const apServer = new ApolloServer({
-    typeDefs, resolvers,
-    context: context.contextSetter
-});
+MongoConnection.getInstance().newConnection().then(() => {
+    const context = new Context();
+    const resolvers = new Resolver().resolvers;
+    const apServer = new ApolloServer({
+        typeDefs, resolvers,
+        context: context.contextSetter
+    });
 
-apServer.start();
-apServer.applyMiddleware({ app });
-app.get('/ping', (req, res) => {
-    res.send('hello world!');
-});
-MongoConnection.getInstance().newConnection().catch(e => console.error);
-app.listen(3000);
+    apServer.start();
+    apServer.applyMiddleware({ app });
+    app.get('/ping', (req, res) => {
+        res.send('hello world!');
+    });
 
+    app.listen(3000);
+
+
+}).catch(e => console.error(e));
 export default app;
