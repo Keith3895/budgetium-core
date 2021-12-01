@@ -1,8 +1,12 @@
 import { User, Account } from '../datamodels';
 import { UserService, AccountService } from '../../services';
 export class Resolver {
-    static userService = new UserService();
-    static accountService = new AccountService();
+    static userService;// = new UserService();
+    static accountService;// = new AccountService();
+    constructor(){
+        Resolver.userService = new UserService();
+        Resolver.accountService = new AccountService();
+    }
     resolvers = {
         Query: {
             async me(parent, args, context, info) {
