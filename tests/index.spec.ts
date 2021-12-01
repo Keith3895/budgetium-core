@@ -23,7 +23,6 @@ describe('express appp startup', () => {
     it('start App', async (done) => {
         request(app).get('/ping').end((err, res) => {
             expect(res).to.have.status(200);
-            // tslint:disable-next-line: no-unused-expression
             expect(res.body).to.exist;
             expect(res.text).to.equal('hello world!');
         });
