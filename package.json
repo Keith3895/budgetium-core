@@ -20,7 +20,6 @@
     "build": "tsc -p tsconfig.json",
     "precontainerize": "npm run build",
     "containerize": "docker build -t budgetium-core/$npm_package_version .",
-    "postcontainerize": "sed 's/{{version}}/'$npm_package_version'/' docker-compose.template.yml > docker-compose.yml",
     "test": "mocha --exit -r ts-node/register \"tests/**/*.spec.ts\"",
     "coverage": "nyc npm run test",
     "coverage-upload": "nyc --reporter=lcov --reporter=cobertura npm test && codecov"
