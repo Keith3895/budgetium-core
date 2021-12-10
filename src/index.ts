@@ -11,7 +11,8 @@ MongoConnection.getInstance().newConnection().then(() => {
     const resolvers = new Resolver().resolvers;
     const apServer = new ApolloServer({
         typeDefs, resolvers,
-        context: context.contextSetter
+        context: context.contextSetter,
+        playground:true
     });
 
     apServer.start();

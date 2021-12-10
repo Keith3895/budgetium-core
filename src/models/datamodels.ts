@@ -13,19 +13,21 @@ export class Account {
     user_id: string;
 }
 export interface Transaction {
-    _id: string;
+    _id?: string;
     amount: number;
-    timestamp: Date;
-    tag: string[];
-    account_id: string;
+    timestamp?: Date;
+    tag?: string[];
+    account_id?: string;
+    user_id:string;
 }
-export class Spend implements Transaction {
-    _id: string;
+export class Expense implements Transaction {
+    _id?: string;
     amount: number;
-    timestamp: Date;
-    tag: string[];
-    account_id: string;
-    type: string;
+    timestamp?: Date;
+    tag?: string[];
+    account_id?: string;
+    type?: string;
+    user_id:string;
     constructor() {
         this.type = 'SPEND';
     }
@@ -37,6 +39,7 @@ export class Income implements Transaction {
     tag: string[];
     account_id: string;
     type: string;
+    user_id:string;
     constructor() {
         this.type = 'INCOME';
     }

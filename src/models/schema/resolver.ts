@@ -1,11 +1,14 @@
 import { User, Account } from '../datamodels';
 import { UserService, AccountService } from '../../services';
+import { ExpenseService } from '../../services/expenseService';
 export class Resolver {
     static userService;// = new UserService();
     static accountService;// = new AccountService();
-    constructor(){
+    static expenseService;
+    constructor() {
         Resolver.userService = new UserService();
         Resolver.accountService = new AccountService();
+        Resolver.expenseService = new ExpenseService();
     }
     resolvers = {
         Query: {
@@ -48,6 +51,13 @@ export class Resolver {
                 if (user) {
                     return user;
                 }
+            },
+            async addExpense(parent, args, context) {
+                await Resolver.expenseService.addExpense({
+                    ...{ user_id: context.user.email },
+                    ...args
+                });
+                return args;
             }
         }
     };
