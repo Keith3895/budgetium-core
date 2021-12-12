@@ -14,15 +14,23 @@ type Expense{
     amount: Int!
     expense_description: String
     category: String
+    user_id: String
 }
+
 type Account{
     accountNumber: String!
     balance: Float!
     active: Boolean!
 }
+
+input ExpenseInput{
+    amount: Int!
+    expense_description: String
+    category: String
+}
 type Mutation{
     addAccount(accountNumber: String!, balance: Float!, active: Boolean!):Account
     updateUser(mobile:Int):User
-    addExpense(amount: Int!, expense_description: String, category: String):Expense
+    addExpense(input:ExpenseInput):Expense
 }
 `;

@@ -55,9 +55,9 @@ export class Resolver {
             async addExpense(parent, args, context) {
                 await Resolver.expenseService.addExpense({
                     ...{ user_id: context.user.email },
-                    ...args
+                    ...args.input
                 });
-                return args;
+                return args.input;
             }
         }
     };
